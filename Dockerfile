@@ -1,7 +1,7 @@
 # Stage 1: Compile and Build angular codebase
 
 # Use official node image as the base image
-FROM image-registry.openshift-image-registry.svc:5000/openshift/nodejs-16:latest as build
+FROM registry.redhat.io/ubi9/nodejs-16:latest as build
 
 # Set the working directory
 WORKDIR /app
@@ -22,7 +22,7 @@ RUN npm run build -- --configuration production --output-path=/dist
 # Stage 2: Serve app with nginx server
 
 # Use official nginx image as the base image
-FROM image-registry.openshift-image-registry.svc:5000/openshift/nginx-120:latest
+FROM registry.redhat.io/ubi9/nginx-120:latest
 
 # TEST
 USER root
